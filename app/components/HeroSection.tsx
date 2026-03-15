@@ -4,39 +4,75 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const benefitBullets = [
-  "💰 Bis zu 100 % Kostenübernahme",
-  "🐾 Freie Tierarztwahl",
-  "🩺 Schutz bei Operationen & Krankheiten",
-  "🏛️ Angebote von Experten renommierter Versicherungen",
-];
+type HeroVariant = "general" | "dog";
 
-const trustStatements = [
-  "🐶 Schutz für deinen Liebling",
-  "⭐ Top Tarife für Hundekrankenversicherung",
-  "❤️ Bis zu 100 % Kostenübernahme",
-];
+const content = {
+  general: {
+    benefitBullets: [
+      "💰 Bis zu 100 % Kostenübernahme",
+      "🐾 Freie Tierarztwahl",
+      "🩺 Schutz bei Operationen & Krankheiten",
+      "🏛️ Angebote von Experten renommierter Versicherungen",
+    ],
+    trustStatements: [
+      "🐾 Schutz für deinen Liebling",
+      "⭐ Top Tarife für Tierkrankenversicherung",
+      "❤️ Bis zu 100 % Kostenübernahme",
+    ],
+    heroTrustBullets: [
+      "✓ Kostenlos & unverbindlich",
+      "✓ Angebote in wenigen Minuten",
+      "✓ Für viele Haustiere geeignet",
+    ],
+    headline: "Schütze dein Haustier vor hohen Tierarztkosten.",
+    subheadline:
+      "Vergleiche Tierkrankenversicherungen mit bis zu 100 % Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.",
+    validationError: "Bitte gib einen Namen ein.",
+    imageAlt: "Haustiere – gut versichert mit der passenden Tierkrankenversicherung",
+    ctaTarget: "/hundekrankenversicherung#vergleich",
+  },
+  dog: {
+    benefitBullets: [
+      "💰 Bis zu 100 % Kostenübernahme",
+      "🐾 Freie Tierarztwahl",
+      "🩺 Schutz bei Operationen & Krankheiten",
+      "🏛️ Angebote von Experten renommierter Versicherungen",
+    ],
+    trustStatements: [
+      "🐶 Schutz für deinen Liebling",
+      "⭐ Top Tarife für Hundekrankenversicherung",
+      "❤️ Bis zu 100 % Kostenübernahme",
+    ],
+    heroTrustBullets: [
+      "✓ Kostenlos & unverbindlich",
+      "✓ Angebote in wenigen Minuten",
+      "✓ Für alle Hunderassen geeignet",
+    ],
+    headline: "Schütze deinen Hund vor hohen Tierarztkosten.",
+    subheadline:
+      "Vergleiche Hundekrankenversicherungen mit bis zu 100 % Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.",
+    validationError: "Bitte gib den Namen deines Hundes ein.",
+    imageAlt: "Hunde – gut versichert mit der passenden Hundekrankenversicherung",
+    ctaTarget: "/hundekrankenversicherung#vergleich",
+  },
+};
 
-const heroTrustBullets = [
-  "✓ Kostenlos & unverbindlich",
-  "✓ Angebote in wenigen Minuten",
-  "✓ Für alle Hunderassen geeignet",
-];
-
-export function HeroSection() {
-  const [dogName, setDogName] = useState("");
+export function HeroSection({ variant = "general" }: { variant?: HeroVariant }) {
+  const [petName, setPetName] = useState("");
   const [validationError, setValidationError] = useState("");
   const router = useRouter();
+  const c = content[variant];
+  const heroImageSrc = variant === "dog" ? "/hero-hunde.png" : "/hero-haustiere.png";
 
   function handleHeroCtaClick(e: React.MouseEvent) {
     e.preventDefault();
-    const trimmed = dogName.trim();
+    const trimmed = petName.trim();
     if (!trimmed) {
-      setValidationError("Bitte gib den Namen deines Hundes ein.");
+      setValidationError(c.validationError);
       return;
     }
     setValidationError("");
-    router.push("/hundekrankenversicherung#vergleich");
+    router.push(c.ctaTarget);
   }
 
   const alertBox = (
@@ -53,24 +89,21 @@ export function HeroSection() {
       id="hero-heading"
       className="mt-4 text-3xl font-bold tracking-tight text-deep-trust-blue sm:text-4xl lg:text-5xl"
     >
-      Schütze deinen Hund vor hohen Tierarztkosten.
+      {c.headline}
     </h1>
   );
 
   const subheadline = (
-    <p className="mt-5 max-w-xl text-lg text-dark-slate/90">
-      Vergleiche Hundekrankenversicherungen mit bis zu 100 %
-      Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.
-    </p>
+    <p className="mt-5 max-w-xl text-lg text-dark-slate/90">{c.subheadline}</p>
   );
 
-  const dogImage = (
-    <div className="relative aspect-[4/3] w-full max-w-[280px] min-w-0 overflow-hidden mx-auto md:mx-0 md:max-w-none">
+  const heroImage = (
+    <div className="relative aspect-[4/3] w-full max-w-[280px] min-w-0 overflow-hidden rounded-xl mx-auto md:mx-0 md:max-w-none">
       <Image
-        src="/hero-hunde.png"
-        alt="Hunde – gut versichert mit der passenden Hundekrankenversicherung"
+        src={heroImageSrc}
+        alt={c.imageAlt}
         fill
-        className="object-cover"
+        className="object-cover object-center"
         sizes="(max-width: 767px) 280px, 50vw"
         priority
       />
@@ -79,15 +112,15 @@ export function HeroSection() {
 
   const inputBlock = (
     <div className="mt-8 flex max-w-sm flex-col items-stretch gap-4">
-      <label htmlFor="hero-dog-name" className="sr-only">
-        Name deines Hundes
+      <label htmlFor="hero-pet-name" className="sr-only">
+        Name deines Vierbeiners
       </label>
       <input
-        id="hero-dog-name"
+        id="hero-pet-name"
         type="text"
-        value={dogName}
+        value={petName}
         onChange={(e) => {
-          setDogName(e.target.value);
+          setPetName(e.target.value);
           if (validationError) setValidationError("");
         }}
         placeholder="🐶 Wie heißt dein Vierbeiner?"
@@ -108,7 +141,7 @@ export function HeroSection() {
         Kostenlosen Tarifvergleich anfordern
       </button>
       <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-dark-slate/80" aria-label="Vorteile">
-        {heroTrustBullets.map((line) => (
+        {c.heroTrustBullets.map((line) => (
           <li key={line}>{line}</li>
         ))}
       </ul>
@@ -117,7 +150,7 @@ export function HeroSection() {
 
   const badges = (
     <div className="flex flex-wrap gap-3 text-sm text-dark-slate/70">
-      {trustStatements.map((line) => (
+      {c.trustStatements.map((line) => (
         <span
           key={line}
           className="rounded-full bg-off-white px-3 py-1.5 ring-1 ring-dark-slate/5"
@@ -130,7 +163,7 @@ export function HeroSection() {
 
   const benefitList = (
     <ul className="mt-6 space-y-2" aria-label="Vorteile">
-      {benefitBullets.map((line) => (
+      {c.benefitBullets.map((line) => (
         <li key={line} className="flex items-center gap-2 text-base text-dark-slate/90">
           {line}
         </li>
@@ -144,17 +177,15 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto max-w-6xl">
-        {/* Mobile: single column, custom order (below 768px) */}
         <div className="flex flex-col md:hidden">
           {alertBox}
           {headline}
           <div className="mt-4">{badges}</div>
-          <div className="mt-4">{dogImage}</div>
+          <div className="mt-4">{heroImage}</div>
           {inputBlock}
           <div className="mt-6">{benefitList}</div>
         </div>
 
-        {/* Desktop: 2-column grid (768px and up), badges only on the right above image */}
         <div className="hidden md:grid md:grid-cols-1 md:gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
           <div>
             {alertBox}
@@ -165,12 +196,12 @@ export function HeroSection() {
           </div>
           <div className="relative flex flex-col justify-center gap-4 lg:justify-end">
             {badges}
-            <div className="relative aspect-[4/3] w-full min-w-0 overflow-hidden">
+            <div className="relative aspect-[4/3] w-full min-w-0 overflow-hidden rounded-xl">
               <Image
-                src="/hero-hunde.png"
-                alt="Hunde – gut versichert mit der passenden Hundekrankenversicherung"
+                src={heroImageSrc}
+                alt={c.imageAlt}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="50vw"
                 priority
               />

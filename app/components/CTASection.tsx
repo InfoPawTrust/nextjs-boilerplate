@@ -1,6 +1,19 @@
 import Link from "next/link";
 
-export function CTASection() {
+type Variant = "general" | "dog";
+
+const content = {
+  general: {
+    heading: "Finde jetzt die passende Tierkrankenversicherung.",
+  },
+  dog: {
+    heading: "Finde jetzt die passende Hundekrankenversicherung.",
+  },
+};
+
+export function CTASection({ variant = "general" }: { variant?: Variant }) {
+  const c = content[variant];
+
   return (
     <section
       className="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
@@ -11,7 +24,7 @@ export function CTASection() {
           id="cta-heading"
           className="text-2xl font-bold text-deep-trust-blue sm:text-3xl"
         >
-          Finde jetzt die passende Hundekrankenversicherung.
+          {c.heading}
         </h2>
         <p className="mt-4 text-dark-slate/80">
           Kostenlos & unverbindlich

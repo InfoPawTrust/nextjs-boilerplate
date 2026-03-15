@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PawTrust – Hundekrankenversicherung vergleichen",
+  title: "PawTrust – Tierkrankenversicherung vergleichen",
   description:
-    "Die passende Hundekrankenversicherung finden. Schnell, kostenlos und unverbindlich vergleichen. PawTrust verbindet dich mit passenden Angeboten.",
+    "Die passende Tierkrankenversicherung für dein Haustier finden. Schnell, kostenlos und unverbindlich vergleichen. PawTrust verbindet dich mit passenden Angeboten.",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",

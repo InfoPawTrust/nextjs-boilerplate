@@ -9,7 +9,7 @@ import { Footer } from "../components/Footer";
 export const metadata = {
   title: "Über uns | PawTrust",
   description:
-    "Erfahre mehr über PawTrust – wir helfen dir, die passende Hundekrankenversicherung zu finden.",
+    "Erfahre mehr über PawTrust – wir helfen dir, die passende Tierkrankenversicherung für dein Haustier zu finden.",
 };
 
 export default function UeberUnsPage() {

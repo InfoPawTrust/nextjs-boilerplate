@@ -2,29 +2,61 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const steps = [
-  {
-    number: "1",
-    icon: "paw",
-    title: "Erzähl uns kurz von deinem Hund",
-    description:
-      "Ein paar kurze Fragen zu Alter, Rasse und Bedarf – dauert weniger als eine Minute.",
-  },
-  {
-    number: "2",
-    icon: "search",
-    title: "Wir finden passende Tarife",
-    description:
-      "Du wirst von einem Experten kontaktiert und erhältst eine Übersicht passender Angebote von verschiedenen Versicherungen.",
-  },
-  {
-    number: "3",
-    icon: "check",
-    title: "Du entscheidest in Ruhe",
-    description:
-      "Vergleiche die Optionen und wähle den Schutz, der zu dir und deinem Hund passt.",
-  },
-];
+type Variant = "general" | "dog";
+
+const stepsContent = {
+  general: [
+    {
+      number: "1",
+      icon: "paw",
+      title: "Erzähl uns kurz von deinem Haustier",
+      description:
+        "Ein paar kurze Fragen zu Alter, Rasse und Bedarf – dauert weniger als eine Minute.",
+    },
+    {
+      number: "2",
+      icon: "search",
+      title: "Wir finden passende Tarife",
+      description:
+        "Du wirst von einem Experten kontaktiert und erhältst eine Übersicht passender Angebote von verschiedenen Versicherungen.",
+    },
+    {
+      number: "3",
+      icon: "check",
+      title: "Du entscheidest in Ruhe",
+      description:
+        "Vergleiche die Optionen und wähle den Schutz, der zu dir und deinem Haustier passt.",
+    },
+  ],
+  dog: [
+    {
+      number: "1",
+      icon: "paw",
+      title: "Erzähl uns kurz von deinem Hund",
+      description:
+        "Ein paar kurze Fragen zu Alter, Rasse und Bedarf – dauert weniger als eine Minute.",
+    },
+    {
+      number: "2",
+      icon: "search",
+      title: "Wir finden passende Tarife",
+      description:
+        "Du wirst von einem Experten kontaktiert und erhältst eine Übersicht passender Angebote von verschiedenen Versicherungen.",
+    },
+    {
+      number: "3",
+      icon: "check",
+      title: "Du entscheidest in Ruhe",
+      description:
+        "Vergleiche die Optionen und wähle den Schutz, der zu dir und deinem Hund passt.",
+    },
+  ],
+};
+
+const subtitleContent = {
+  general: "So findest du schnell die passende Tierkrankenversicherung.",
+  dog: "So findest du schnell die passende Hundekrankenversicherung.",
+};
 
 const icons: Record<string, React.ReactNode> = {
   paw: (
@@ -44,12 +76,15 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
-export function HowItWorks() {
+export function HowItWorks({ variant = "general" }: { variant?: Variant }) {
   const sectionRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [lineFillPercent, setLineFillPercent] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
+
+  const steps = stepsContent[variant];
+  const subtitle = subtitleContent[variant];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -62,14 +97,12 @@ export function HowItWorks() {
       const sectionTop = rect.top;
       const sectionHeight = rect.height;
 
-      // Line fills earlier: 0 when section enters view, 100% when section is ~50% scrolled through
       const triggerStart = viewportHeight * 0.5;
       const scrolled = triggerStart - sectionTop;
       const scrollable = viewportHeight * 0.35 + sectionHeight * 0.5;
       const raw = Math.max(0, Math.min(1, scrolled / scrollable));
       setLineFillPercent(raw * 100);
 
-      // Which step is active – step 2 early, step 3 a bit later
       const activationLineStep2 = viewportHeight * 0.58 + 100;
       const activationLineStep3 = viewportHeight * 0.48 + 60;
       for (let i = stepRefs.current.length - 1; i >= 0; i--) {
@@ -104,17 +137,13 @@ export function HowItWorks() {
         >
           In 3 einfachen Schritten zum passenden Schutz
         </h2>
-        <p className="mt-3 text-dark-slate/80">
-          So findest du schnell die passende Hundekrankenversicherung.
-        </p>
+        <p className="mt-3 text-dark-slate/80">{subtitle}</p>
 
         <div className="relative mt-12 sm:mt-16">
-          {/* Vertical line (background) */}
           <div
             className="absolute left-5 top-0 bottom-0 w-0.5 bg-dark-slate/15 sm:left-5"
             aria-hidden
           />
-          {/* Vertical line (filled by scroll) */}
           <div
             ref={lineRef}
             className="absolute left-5 top-0 w-0.5 bg-warm-gold transition-[height] duration-300 ease-out"

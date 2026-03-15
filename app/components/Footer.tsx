@@ -28,8 +28,10 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 
 const navLinks = [
-  { href: "/hundekrankenversicherung", label: "Hundekrankenversicherung" },
+  { href: "/hundekrankenversicherung", label: "Hund" },
+  { href: "/katzenkrankenversicherung", label: "Katze" },
   { href: "/faq", label: "FAQ" },
+  { href: "/ratgeber", label: "Ratgeber" },
   { href: "/ueber-uns", label: "Über uns" },
 ];
 
@@ -134,7 +136,8 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-off-white/20 pt-8">
           <p className="text-xs text-off-white/70 max-w-2xl">
-            PawTrust stellt Informationen bereit und kann Anfragen an passende
+            PawTrust ist eine Informations- und Vergleichsplattform für
+            Tierkrankenversicherungen und kann Anfragen an passende
             Versicherungspartner weiterleiten.
           </p>
         </div>

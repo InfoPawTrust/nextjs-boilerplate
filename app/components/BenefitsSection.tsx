@@ -1,28 +1,57 @@
-const benefits = [
-  {
-    title: "Experten statt Tarif-Dschungel",
-    description:
-      "Unsere Experten arbeiten mit renommierten Versicherungen und helfen dir, den passenden Schutz für deinen Hund zu finden.",
-    icon: "expert",
-  },
-  {
-    title: "In wenigen Minuten zum passenden Schutz",
-    description:
-      "Unser digitaler Prozess führt dich schnell zu passenden Angeboten.",
-    icon: "speed",
-  },
-  {
-    title: "Kostenlos & unverbindlich",
-    description: "Du entscheidest selbst, ob du ein Angebot annimmst.",
-    icon: "free",
-  },
-  {
-    title: "Tarife passend zu deinem Hund",
-    description:
-      "Angebote werden auf Alter, Rasse und Bedarf deines Hundes abgestimmt.",
-    icon: "dog",
-  },
-];
+type Variant = "general" | "dog";
+
+const content = {
+  general: [
+    {
+      title: "Experten statt Tarif-Dschungel",
+      description:
+        "Unsere Experten arbeiten mit renommierten Versicherungen und helfen dir, den passenden Schutz für dein Haustier zu finden.",
+      icon: "expert",
+    },
+    {
+      title: "In wenigen Minuten zum passenden Schutz",
+      description:
+        "Unser digitaler Prozess führt dich schnell zu passenden Angeboten.",
+      icon: "speed",
+    },
+    {
+      title: "Kostenlos & unverbindlich",
+      description: "Du entscheidest selbst, ob du ein Angebot annimmst.",
+      icon: "free",
+    },
+    {
+      title: "Tarife passend zu deinem Haustier",
+      description:
+        "Angebote werden auf Alter, Rasse und Bedarf deines Haustiers abgestimmt.",
+      icon: "dog",
+    },
+  ],
+  dog: [
+    {
+      title: "Experten statt Tarif-Dschungel",
+      description:
+        "Unsere Experten arbeiten mit renommierten Versicherungen und helfen dir, den passenden Schutz für deinen Hund zu finden.",
+      icon: "expert",
+    },
+    {
+      title: "In wenigen Minuten zum passenden Schutz",
+      description:
+        "Unser digitaler Prozess führt dich schnell zu passenden Angeboten.",
+      icon: "speed",
+    },
+    {
+      title: "Kostenlos & unverbindlich",
+      description: "Du entscheidest selbst, ob du ein Angebot annimmst.",
+      icon: "free",
+    },
+    {
+      title: "Tarife passend zu deinem Hund",
+      description:
+        "Angebote werden auf Alter, Rasse und Bedarf deines Hundes abgestimmt.",
+      icon: "dog",
+    },
+  ],
+};
 
 const icons: Record<string, React.ReactNode> = {
   expert: (
@@ -47,7 +76,9 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
-export function BenefitsSection() {
+export function BenefitsSection({ variant = "general" }: { variant?: Variant }) {
+  const benefits = content[variant];
+
   return (
     <section
       className="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20"

@@ -18,12 +18,12 @@ export default function HundekrankenversicherungPage() {
     <div className="min-h-screen bg-off-white">
       <Navbar />
       <main>
-        <HeroSection />
-        <AboutPawTrustSection />
+        <HeroSection variant="dog" />
+        <AboutPawTrustSection variant="dog" />
         <InsuranceComparisonSection />
-        <BenefitsSection />
-        <HowItWorks />
-        <CTASection />
+        <BenefitsSection variant="dog" />
+        <HowItWorks variant="dog" />
+        <CTASection variant="dog" />
       </main>
       <Footer />
     </div>

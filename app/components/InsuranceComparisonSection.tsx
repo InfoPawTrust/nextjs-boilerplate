@@ -1,6 +1,6 @@
 const rows = [
   {
-    leistung: "Operation (z. B. Kreuzbandriss)",
+    leistung: "Operation (z. B. Bandscheibe, Kreuzband)",
     mit: "✔️ versicherbar",
     ohne: "❌ 3.000–4.500 €",
   },
@@ -34,6 +34,7 @@ const rows = [
 export function InsuranceComparisonSection() {
   return (
     <section
+      id="vergleich"
       className="bg-off-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
       aria-labelledby="comparison-heading"
     >
@@ -46,7 +47,7 @@ export function InsuranceComparisonSection() {
         </h2>
         <p className="mt-3 max-w-2xl text-dark-slate/80">
           Ein Überblick über typische Tierarztkosten mit und ohne
-          Hundekrankenversicherung.
+          Tierkrankenversicherung.
         </p>
         <div className="mt-10 w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-dark-slate/5">
           <div className="min-w-0 overflow-hidden">

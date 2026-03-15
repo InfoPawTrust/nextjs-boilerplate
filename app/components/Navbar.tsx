@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/hundekrankenversicherung", label: "Hundekrankenversicherung" },
+  { href: "/hundekrankenversicherung", label: "Hund" },
+  { href: "/katzenkrankenversicherung", label: "Katze" },
   { href: "/faq", label: "FAQ" },
+  { href: "/ratgeber", label: "Ratgeber" },
   { href: "/ueber-uns", label: "Über uns" },
 ];
 
