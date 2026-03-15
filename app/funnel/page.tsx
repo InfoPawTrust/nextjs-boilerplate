@@ -3,6 +3,9 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { FunnelPageClient } from "./FunnelPageClient";
 
+/** Verhindert statisches Pre-Rendering; useSearchParams() in FunnelPageClient braucht Request-Zeit. */
+export const dynamic = "force-dynamic";
+
 function FunnelFallback() {
   return (
     <div className="min-h-screen bg-off-white">
