@@ -47,7 +47,7 @@ const icons: Record<string, React.ReactNode> = {
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const stepRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [lineFillPercent, setLineFillPercent] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
 
