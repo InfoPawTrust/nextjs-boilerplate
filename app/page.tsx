@@ -3,7 +3,6 @@ import { HeroSection } from "./components/HeroSection";
 import { BenefitsSection } from "./components/BenefitsSection";
 import { HowItWorks } from "./components/HowItWorks";
 import { InsuranceComparisonSection } from "./components/InsuranceComparisonSection";
-import { TrustSection } from "./components/TrustSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
 
@@ -13,10 +12,9 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <InsuranceComparisonSection />
         <BenefitsSection />
         <HowItWorks />
-        <InsuranceComparisonSection />
-        <TrustSection />
         <CTASection />
       </main>
       <Footer />

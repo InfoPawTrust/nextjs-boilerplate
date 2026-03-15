@@ -1,43 +1,46 @@
 const benefits = [
   {
-    title: "Passende Tarife statt langem Suchen",
-    description: "In wenigen Minuten passende Angebote.",
-    icon: "search",
+    title: "Experten statt Tarif-Dschungel",
+    description:
+      "Unsere Experten arbeiten mit renommierten Versicherungen und helfen dir, den passenden Schutz für deinen Hund zu finden.",
+    icon: "expert",
   },
   {
-    title: "Schnell & unkompliziert",
-    description: "Vergleich in wenigen Minuten.",
-    icon: "clock",
+    title: "In wenigen Minuten zum passenden Schutz",
+    description:
+      "Unser digitaler Prozess führt dich schnell zu passenden Angeboten.",
+    icon: "speed",
   },
   {
     title: "Kostenlos & unverbindlich",
-    description: "Die Anfrage ist komplett kostenlos.",
-    icon: "check",
+    description: "Du entscheidest selbst, ob du ein Angebot annimmst.",
+    icon: "free",
   },
   {
-    title: "Für deinen Hund gemacht",
-    description: "Tarife passend zu Alter, Rasse und Bedarf.",
-    icon: "paw",
+    title: "Tarife passend zu deinem Hund",
+    description:
+      "Angebote werden auf Alter, Rasse und Bedarf deines Hundes abgestimmt.",
+    icon: "dog",
   },
 ];
 
 const icons: Record<string, React.ReactNode> = {
-  search: (
+  expert: (
     <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
     </svg>
   ),
-  clock: (
+  speed: (
     <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
     </svg>
   ),
-  check: (
+  free: (
     <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   ),
-  paw: (
+  dog: (
     <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
     </svg>
@@ -47,11 +50,17 @@ const icons: Record<string, React.ReactNode> = {
 export function BenefitsSection() {
   return (
     <section
-      className="bg-off-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
+      className="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
       aria-labelledby="benefits-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <h2
+          id="benefits-heading"
+          className="text-2xl font-bold text-deep-trust-blue sm:text-3xl"
+        >
+          Warum PawTrust?
+        </h2>
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map(({ title, description, icon }) => (
             <article
               key={title}

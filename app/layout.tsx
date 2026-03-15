@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "PawTrust – Hundekrankenversicherung vergleichen",
   description:
     "Die passende Hundekrankenversicherung finden. Schnell, kostenlos und unverbindlich vergleichen. PawTrust verbindet dich mit passenden Angeboten.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

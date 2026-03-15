@@ -1,11 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const benefitBullets = [
   "💰 Bis zu 100 % Kostenübernahme",
   "🐾 Freie Tierarztwahl",
   "🩺 Schutz bei Operationen & Krankheiten",
-  "👨‍⚕️ Angebote von Experten renommierter Versicherungen",
+  "🏛️ Angebote von Experten renommierter Versicherungen",
 ];
 
 const trustStatements = [
@@ -14,62 +17,161 @@ const trustStatements = [
   "❤️ Bis zu 100 % Kostenübernahme",
 ];
 
+const heroTrustBullets = [
+  "✓ Kostenlos & unverbindlich",
+  "✓ Angebote in wenigen Minuten",
+  "✓ Für alle Hunderassen geeignet",
+];
+
 export function HeroSection() {
+  const [dogName, setDogName] = useState("");
+  const [validationError, setValidationError] = useState("");
+  const router = useRouter();
+
+  function handleHeroCtaClick(e: React.MouseEvent) {
+    e.preventDefault();
+    const trimmed = dogName.trim();
+    if (!trimmed) {
+      setValidationError("Bitte gib den Namen deines Hundes ein.");
+      return;
+    }
+    setValidationError("");
+    router.push("/hundekrankenversicherung#vergleich");
+  }
+
+  const alertBox = (
+    <p
+      className="inline-flex items-center gap-2 rounded-lg bg-dark-slate/10 px-3 py-1.5 text-sm font-medium text-dark-slate ring-1 ring-dark-slate/15"
+      role="status"
+    >
+      ⚠️ Eine Operation beim Tierarzt kann schnell 3.000–4.000 € kosten!
+    </p>
+  );
+
+  const headline = (
+    <h1
+      id="hero-heading"
+      className="mt-4 text-3xl font-bold tracking-tight text-deep-trust-blue sm:text-4xl lg:text-5xl"
+    >
+      Schütze deinen Hund vor hohen Tierarztkosten.
+    </h1>
+  );
+
+  const subheadline = (
+    <p className="mt-5 max-w-xl text-lg text-dark-slate/90">
+      Vergleiche Hundekrankenversicherungen mit bis zu 100 %
+      Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.
+    </p>
+  );
+
+  const dogImage = (
+    <div className="relative aspect-[4/3] w-full max-w-[280px] min-w-0 overflow-hidden mx-auto md:mx-0 md:max-w-none">
+      <Image
+        src="/hero-hunde.png"
+        alt="Hunde – gut versichert mit der passenden Hundekrankenversicherung"
+        fill
+        className="object-cover"
+        sizes="(max-width: 767px) 280px, 50vw"
+        priority
+      />
+    </div>
+  );
+
+  const inputBlock = (
+    <div className="mt-8 flex max-w-sm flex-col items-stretch gap-4">
+      <label htmlFor="hero-dog-name" className="sr-only">
+        Name deines Hundes
+      </label>
+      <input
+        id="hero-dog-name"
+        type="text"
+        value={dogName}
+        onChange={(e) => {
+          setDogName(e.target.value);
+          if (validationError) setValidationError("");
+        }}
+        placeholder="🐶 Wie heißt dein Vierbeiner?"
+        className="w-full rounded-lg border border-dark-slate/20 bg-white px-4 py-3 text-base text-dark-slate placeholder:text-dark-slate/50 focus:border-deep-trust-blue focus:outline-none focus:ring-2 focus:ring-deep-trust-blue/20"
+        aria-invalid={!!validationError}
+        aria-describedby={validationError ? "hero-name-error" : undefined}
+      />
+      {validationError && (
+        <p id="hero-name-error" className="text-sm text-red-600" role="alert">
+          {validationError}
+        </p>
+      )}
+      <button
+        type="button"
+        onClick={handleHeroCtaClick}
+        className="w-full rounded-lg bg-gradient-to-bl from-warm-gold-light via-warm-gold to-warm-gold-dark px-6 py-3.5 text-base font-semibold text-deep-trust-blue shadow-md shadow-warm-gold-dark/30 transition-all hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-warm-gold focus:ring-offset-2"
+      >
+        Kostenlosen Tarifvergleich anfordern
+      </button>
+      <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-dark-slate/80" aria-label="Vorteile">
+        {heroTrustBullets.map((line) => (
+          <li key={line}>{line}</li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  const badges = (
+    <div className="flex flex-wrap gap-3 text-sm text-dark-slate/70">
+      {trustStatements.map((line) => (
+        <span
+          key={line}
+          className="rounded-full bg-off-white px-3 py-1.5 ring-1 ring-dark-slate/5"
+        >
+          {line}
+        </span>
+      ))}
+    </div>
+  );
+
+  const benefitList = (
+    <ul className="mt-6 space-y-2" aria-label="Vorteile">
+      {benefitBullets.map((line) => (
+        <li key={line} className="flex items-center gap-2 text-base text-dark-slate/90">
+          {line}
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <section
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28"
+      className="relative overflow-hidden bg-white px-4 pt-8 pb-12 sm:px-6 md:py-16 lg:px-8 lg:py-28"
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+        {/* Mobile: single column, custom order (below 768px) */}
+        <div className="flex flex-col md:hidden">
+          {alertBox}
+          {headline}
+          <div className="mt-4">{badges}</div>
+          <div className="mt-4">{dogImage}</div>
+          {inputBlock}
+          <div className="mt-6">{benefitList}</div>
+        </div>
+
+        {/* Desktop: 2-column grid (768px and up), badges only on the right above image */}
+        <div className="hidden md:grid md:grid-cols-1 md:gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
           <div>
-            <h1
-              id="hero-heading"
-              className="text-3xl font-bold tracking-tight text-deep-trust-blue sm:text-4xl lg:text-5xl"
-            >
-              Schütze deinen Hund vor hohen Tierarztkosten.
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-dark-slate/90">
-              Vergleiche Hundekrankenversicherungen mit bis zu 100 %
-              Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.
-            </p>
-            <ul className="mt-6 space-y-2" aria-label="Vorteile">
-              {benefitBullets.map((line) => (
-                <li key={line} className="flex items-center gap-2 text-base text-dark-slate/90">
-                  {line}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-col items-start gap-4">
-              <Link
-                href="/hundekrankenversicherung#vergleich"
-                className="inline-flex items-center justify-center rounded-lg bg-warm-gold px-6 py-3.5 text-base font-semibold text-deep-trust-blue shadow-md transition-colors hover:bg-warm-gold/90 focus:outline-none focus:ring-2 focus:ring-warm-gold focus:ring-offset-2"
-              >
-                Kostenlosen Tarifvergleich anfordern
-              </Link>
-              <p className="text-sm text-dark-slate/70">
-                Kostenlos & unverbindlich
-              </p>
-            </div>
+            {alertBox}
+            {headline}
+            {subheadline}
+            {benefitList}
+            {inputBlock}
           </div>
           <div className="relative flex flex-col justify-center gap-4 lg:justify-end">
-            <div className="flex flex-wrap gap-3 text-sm text-dark-slate/70">
-              {trustStatements.map((line) => (
-                <span
-                  key={line}
-                  className="rounded-full bg-off-white px-3 py-1.5 ring-1 ring-dark-slate/5"
-                >
-                  {line}
-                </span>
-              ))}
-            </div>
-            <div className="relative aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-off-white shadow-lg ring-1 ring-dark-slate/5">
+            {badges}
+            <div className="relative aspect-[4/3] w-full min-w-0 overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80"
-                alt="Hund – gut versichert mit der passenden Hundekrankenversicherung"
+                src="/hero-hunde.png"
+                alt="Hunde – gut versichert mit der passenden Hundekrankenversicherung"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw,  min(600px, 50vw)"
+                sizes="50vw"
                 priority
               />
             </div>
