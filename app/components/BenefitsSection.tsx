@@ -1,4 +1,4 @@
-type Variant = "general" | "dog";
+type Variant = "general" | "dog" | "cat";
 
 const content = {
   general: [
@@ -48,6 +48,31 @@ const content = {
       title: "Tarife passend zu deinem Hund",
       description:
         "Angebote werden auf Alter, Rasse und Bedarf deines Hundes abgestimmt.",
+      icon: "dog",
+    },
+  ],
+  cat: [
+    {
+      title: "Experten statt Tarif-Dschungel",
+      description:
+        "Unsere Experten arbeiten mit renommierten Versicherungen und helfen dir, den passenden Schutz für deine Katze zu finden.",
+      icon: "expert",
+    },
+    {
+      title: "In wenigen Minuten zum passenden Schutz",
+      description:
+        "Unser digitaler Prozess führt dich schnell zu passenden Angeboten.",
+      icon: "speed",
+    },
+    {
+      title: "Kostenlos & unverbindlich",
+      description: "Du entscheidest selbst, ob du ein Angebot annimmst.",
+      icon: "free",
+    },
+    {
+      title: "Tarife passend zu deiner Katze",
+      description:
+        "Angebote werden auf Alter, Rasse und Bedarf deiner Katze abgestimmt.",
       icon: "dog",
     },
   ],

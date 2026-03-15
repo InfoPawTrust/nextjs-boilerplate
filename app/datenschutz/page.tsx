@@ -157,6 +157,11 @@ export default function DatenschutzPage() {
                 5. Weitergabe an Versicherungspartner
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-dark-slate/90 sm:text-base">
+                Die im Anfrageformular eingegebenen Daten können zur Erstellung
+                eines Angebots an ausgewählte Versicherungspartner weitergeleitet
+                werden, die passende Tierkrankenversicherungen anbieten.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-dark-slate/90 sm:text-base">
                 Zur Bearbeitung Ihrer Anfrage können Ihre Angaben an ausgewählte
                 Versicherungsanbieter oder Vermittler weitergeleitet werden.
                 Diese können Ihnen daraufhin passende Angebote unterbreiten oder

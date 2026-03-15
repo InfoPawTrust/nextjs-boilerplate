@@ -3,6 +3,7 @@ import { HeroSection } from "./components/HeroSection";
 import { BenefitsSection } from "./components/BenefitsSection";
 import { HowItWorks } from "./components/HowItWorks";
 import { InsuranceComparisonSection } from "./components/InsuranceComparisonSection";
+import { FAQSection } from "./components/FAQSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
 
@@ -15,6 +16,7 @@ export default function Home() {
         <InsuranceComparisonSection />
         <BenefitsSection />
         <HowItWorks />
+        <FAQSection variant="general" />
         <CTASection />
       </main>
       <Footer />

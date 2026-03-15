@@ -4,6 +4,7 @@ import { AboutPawTrustSection } from "../components/AboutPawTrustSection";
 import { InsuranceComparisonSection } from "../components/InsuranceComparisonSection";
 import { BenefitsSection } from "../components/BenefitsSection";
 import { HowItWorks } from "../components/HowItWorks";
+import { FAQSection } from "../components/FAQSection";
 import { CTASection } from "../components/CTASection";
 import { Footer } from "../components/Footer";
 
@@ -23,6 +24,7 @@ export default function HundekrankenversicherungPage() {
         <InsuranceComparisonSection />
         <BenefitsSection variant="dog" />
         <HowItWorks variant="dog" />
+        <FAQSection variant="dog" />
         <CTASection variant="dog" />
       </main>
       <Footer />

@@ -1,4 +1,4 @@
-type Variant = "general" | "dog";
+type Variant = "general" | "dog" | "cat";
 
 const content = {
   general: {
@@ -38,6 +38,31 @@ const content = {
         emoji: "🐶",
         title: "Verantwortung für deinen Hund",
         text: "Für viele Menschen ist ihr Hund ein Familienmitglied. Deshalb glauben wir, dass jeder Hund den bestmöglichen Schutz verdient – und dass Hundebesitzer einfache Wege brauchen, diesen Schutz zu finden.",
+      },
+      {
+        emoji: "🔍",
+        title: "Transparenz statt Tarif-Dschungel",
+        text: "Versicherungen können kompliziert sein. PawTrust hat das Ziel, Angebote verständlich aufzubereiten, Unterschiede sichtbar zu machen und dir eine klare Entscheidungsgrundlage zu geben.",
+      },
+      {
+        emoji: "🛡️",
+        title: "Vertrauen und Sicherheit",
+        text: "Bei Versicherungen geht es um Vertrauen. Deshalb legen wir großen Wert auf seriöse Partner, nachvollziehbare Informationen und einen transparenten Vergleich.",
+      },
+    ],
+  },
+  cat: {
+    intro:
+      "PawTrust hilft Katzenbesitzerinnen und Katzenbesitzern dabei, schnell und unkompliziert passende Katzenkrankenversicherungen zu finden. Unser Ziel ist es, den Vergleich verschiedener Tarife einfach, transparent und verständlich zu machen – damit du die beste Entscheidung für deinen Vierbeiner treffen kannst.",
+    mission:
+      "Wir möchten Katzenbesitzern dabei helfen, ihre Tiere bestmöglich abzusichern, ohne sich durch unübersichtliche Tarife und komplizierte Versicherungsbedingungen kämpfen zu müssen. PawTrust macht den Vergleich einfach, verständlich und schnell – damit du dich auf das konzentrieren kannst, was wirklich zählt: das Wohl deiner Katze.",
+    vision:
+      "Unsere Vision ist eine Welt, in der sich kein Katzenbesitzer zwischen der Gesundheit seines Tieres und hohen Tierarztkosten entscheiden muss. PawTrust möchte langfristig die erste Anlaufstelle für Katzenbesitzer werden, wenn es um transparente und verständliche Versicherungsvergleiche geht.",
+    values: [
+      {
+        emoji: "🐱",
+        title: "Verantwortung für deine Katze",
+        text: "Für viele Menschen ist ihre Katze ein Familienmitglied. Deshalb glauben wir, dass jede Katze den bestmöglichen Schutz verdient – und dass Katzenbesitzer einfache Wege brauchen, diesen Schutz zu finden.",
       },
       {
         emoji: "🔍",

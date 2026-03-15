@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Variant = "general" | "dog";
+type Variant = "general" | "dog" | "cat";
 
 const stepsContent = {
   general: [
@@ -51,11 +51,35 @@ const stepsContent = {
         "Vergleiche die Optionen und wähle den Schutz, der zu dir und deinem Hund passt.",
     },
   ],
+  cat: [
+    {
+      number: "1",
+      icon: "paw",
+      title: "Erzähl uns kurz von deiner Katze",
+      description:
+        "Ein paar kurze Fragen zu Alter, Rasse und Bedarf – dauert weniger als eine Minute.",
+    },
+    {
+      number: "2",
+      icon: "search",
+      title: "Wir finden passende Tarife",
+      description:
+        "Du wirst von einem Experten kontaktiert und erhältst eine Übersicht passender Angebote von verschiedenen Versicherungen.",
+    },
+    {
+      number: "3",
+      icon: "check",
+      title: "Du entscheidest in Ruhe",
+      description:
+        "Vergleiche die Optionen und wähle den Schutz, der zu dir und deiner Katze passt.",
+    },
+  ],
 };
 
 const subtitleContent = {
   general: "So findest du schnell die passende Tierkrankenversicherung.",
   dog: "So findest du schnell die passende Hundekrankenversicherung.",
+  cat: "So findest du schnell die passende Katzenkrankenversicherung.",
 };
 
 const icons: Record<string, React.ReactNode> = {

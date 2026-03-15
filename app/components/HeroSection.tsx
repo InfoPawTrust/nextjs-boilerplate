@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { buildFunnelUrl } from "./funnel/funnel-prefill";
 
-type HeroVariant = "general" | "dog";
+type HeroVariant = "general" | "dog" | "cat";
 
 const content = {
   general: {
@@ -27,9 +28,9 @@ const content = {
     headline: "Schütze dein Haustier vor hohen Tierarztkosten.",
     subheadline:
       "Vergleiche Tierkrankenversicherungen mit bis zu 100 % Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.",
-    validationError: "Bitte gib einen Namen ein.",
     imageAlt: "Haustiere – gut versichert mit der passenden Tierkrankenversicherung",
-    ctaTarget: "/hundekrankenversicherung#vergleich",
+    inputLabel: "Name deines Vierbeiners",
+    inputPlaceholder: "🐶 Wie heißt dein Vierbeiner?",
   },
   dog: {
     benefitBullets: [
@@ -51,28 +52,57 @@ const content = {
     headline: "Schütze deinen Hund vor hohen Tierarztkosten.",
     subheadline:
       "Vergleiche Hundekrankenversicherungen mit bis zu 100 % Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.",
-    validationError: "Bitte gib den Namen deines Hundes ein.",
     imageAlt: "Hunde – gut versichert mit der passenden Hundekrankenversicherung",
-    ctaTarget: "/hundekrankenversicherung#vergleich",
+    inputLabel: "Name deines Hundes",
+    inputPlaceholder: "🐶 Wie heißt dein Vierbeiner?",
+  },
+  cat: {
+    benefitBullets: [
+      "💰 Bis zu 100 % Kostenübernahme",
+      "🐾 Freie Tierarztwahl",
+      "🩺 Schutz bei Operationen & Krankheiten",
+      "🏛️ Angebote von Experten renommierter Versicherungen",
+    ],
+    trustStatements: [
+      "🐱 Schutz für deine Katze",
+      "⭐ Top Tarife für Katzenkrankenversicherung",
+      "❤️ Bis zu 100 % Kostenübernahme",
+    ],
+    heroTrustBullets: [
+      "✓ Kostenlos & unverbindlich",
+      "✓ Angebote in wenigen Minuten",
+      "✓ Für alle Katzenrassen geeignet",
+    ],
+    headline: "Schütze deine Katze vor hohen Tierarztkosten.",
+    subheadline:
+      "Vergleiche Katzenkrankenversicherungen mit bis zu 100 % Kostenübernahme, freier Tierarztwahl und umfassendem Schutz.",
+    imageAlt: "Katzen – gut versichert mit der passenden Katzenkrankenversicherung",
+    inputLabel: "Name deiner Katze",
+    inputPlaceholder: "🐱 Wie heißt deine Katze?",
   },
 };
 
 export function HeroSection({ variant = "general" }: { variant?: HeroVariant }) {
   const [petName, setPetName] = useState("");
-  const [validationError, setValidationError] = useState("");
   const router = useRouter();
   const c = content[variant];
-  const heroImageSrc = variant === "dog" ? "/hero-hunde.png" : "/hero-haustiere.png";
+  const heroImageSrc =
+    variant === "dog"
+      ? "/hero-hunde.png"
+      : variant === "cat"
+        ? "/hero-katzen.png"
+        : "/hero-haustiere.png";
 
   function handleHeroCtaClick(e: React.MouseEvent) {
     e.preventDefault();
     const trimmed = petName.trim();
-    if (!trimmed) {
-      setValidationError(c.validationError);
-      return;
-    }
-    setValidationError("");
-    router.push(c.ctaTarget);
+    const funnelUrl =
+      variant === "dog"
+        ? buildFunnelUrl({ petType: "Hund", petName: trimmed || null })
+        : variant === "cat"
+          ? buildFunnelUrl({ petType: "Katze", petName: trimmed || null })
+          : buildFunnelUrl({ petName: trimmed || null });
+    router.push(funnelUrl);
   }
 
   const alertBox = (
@@ -113,26 +143,16 @@ export function HeroSection({ variant = "general" }: { variant?: HeroVariant }) 
   const inputBlock = (
     <div className="mt-8 flex max-w-sm flex-col items-stretch gap-4">
       <label htmlFor="hero-pet-name" className="sr-only">
-        Name deines Vierbeiners
+        {c.inputLabel}
       </label>
       <input
         id="hero-pet-name"
         type="text"
         value={petName}
-        onChange={(e) => {
-          setPetName(e.target.value);
-          if (validationError) setValidationError("");
-        }}
-        placeholder="🐶 Wie heißt dein Vierbeiner?"
+        onChange={(e) => setPetName(e.target.value)}
+        placeholder={c.inputPlaceholder}
         className="w-full rounded-lg border border-dark-slate/20 bg-white px-4 py-3 text-base text-dark-slate placeholder:text-dark-slate/50 focus:border-deep-trust-blue focus:outline-none focus:ring-2 focus:ring-deep-trust-blue/20"
-        aria-invalid={!!validationError}
-        aria-describedby={validationError ? "hero-name-error" : undefined}
       />
-      {validationError && (
-        <p id="hero-name-error" className="text-sm text-red-600" role="alert">
-          {validationError}
-        </p>
-      )}
       <button
         type="button"
         onClick={handleHeroCtaClick}
