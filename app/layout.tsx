@@ -1,39 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
+import './globals.css';
+const dmSans = localFont({ src: '../public/fonts/dm-sans.ttf', variable: '--font-body', display: 'swap', weight: '100 1000' });
+const bricolage = localFont({ src: '../public/fonts/bricolage-grotesque.ttf', variable: '--font-heading', display: 'swap', weight: '200 800' });
 export const metadata: Metadata = {
-  title: "PawTrust – Tierkrankenversicherung vergleichen",
-  description:
-    "Die passende Tierkrankenversicherung für dein Haustier finden. Schnell, kostenlos und unverbindlich vergleichen. PawTrust verbindet dich mit passenden Angeboten.",
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
+  metadataBase: new URL('https://pawtrust.de'),
+  title: { default: 'PawTrust – Für euer Leben zusammen.', template: '%s | PawTrust' },
+  description: 'Wir machen Tierkrankenversicherung verständlich. Für dich und deinen Vierbeiner. Unsere neue Website ist bald für euch da.',
+  icons: { icon: '/pawtrust-mark.svg', apple: '/pawtrust-wordmark.png' },
+  openGraph: { title: 'PawTrust – Für euer Leben zusammen.', description: 'Etwas Gutes kommt. Unsere neue Website ist bald für euch da.', locale: 'de_DE', type: 'website', images: [{ url: '/pawtrust-wordmark.png', width: 2172, height: 724, alt: 'PawTrust' }] },
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="de">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+export const viewport: Viewport = { themeColor: '#FFF5E8' };
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="de"><body className={`${dmSans.variable} ${bricolage.variable}`}><a className="skip-link" href="#inhalt">Zum Inhalt</a>{children}</body></html>;
 }
