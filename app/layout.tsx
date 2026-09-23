@@ -6,9 +6,9 @@ const bricolage = localFont({ src: '../public/fonts/bricolage-grotesque.ttf', va
 export const metadata: Metadata = {
   metadataBase: new URL('https://pawtrust.de'),
   title: { default: 'PawTrust – Für euer Leben zusammen.', template: '%s | PawTrust' },
-  description: 'Wir machen Tierkrankenversicherung verständlich. Für dich und deinen Vierbeiner. Unsere neue Website ist bald für euch da.',
-  icons: { icon: '/pawtrust-mark.svg', apple: '/pawtrust-wordmark.png' },
-  openGraph: { title: 'PawTrust – Für euer Leben zusammen.', description: 'Etwas Gutes kommt. Unsere neue Website ist bald für euch da.', locale: 'de_DE', type: 'website', images: [{ url: '/pawtrust-wordmark.png', width: 2172, height: 724, alt: 'PawTrust' }] },
+  description: 'Wir machen Tierkrankenversicherung verständlich. Für dich und deinen Vierbeiner. Krankenversicherung und OP-Schutz für Hund und Katze.',
+  icons: { icon: '/pawtrust-mark.svg', apple: '/pawtrust-paw.png' },
+  openGraph: { title: 'PawTrust – Für euer Leben zusammen.', description: 'Krankenversicherung und OP-Schutz für Hund und Katze.', locale: 'de_DE', type: 'website', images: [{ url: '/pawtrust-wordmark.png', width: 2172, height: 724, alt: 'PawTrust' }] },
 };
 export const viewport: Viewport = { themeColor: '#FFF5E8' };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
