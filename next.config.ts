@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   experimental: { cpus: 2 },
   devIndicators: false,
   images: {
+    qualities: [75, 95],
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
