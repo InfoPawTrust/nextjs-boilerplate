@@ -24,3 +24,6 @@ html{scroll-behavior:smooth;scroll-padding-top:110px}.home-page{background:var(-
 @media(max-width:1050px){.pt-trust-compact{grid-template-columns:210px minmax(0,1fr)}}
 @media(max-width:760px){.pt-trust-compact{grid-template-columns:minmax(0,1fr);gap:8px}.pt-marquee-group{gap:28px;padding-right:28px}.pt-marquee-group li{font-size:13px;gap:10px}.pt-feature-icon{width:32px;height:32px}.pt-marquee{margin-inline:-10px}.pt-marquee-controls{margin-top:-3px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.home-page *{transition:none!important;animation:none!important}.pt-marquee{overflow-x:auto;mask-image:none}.pt-marquee-track{will-change:auto;transform:none}.pt-marquee-group[aria-hidden="true"],.pt-marquee-pause{display:none}}
+
+/* Editorial icon proposal: open silhouettes, no circular app badges. */
+.pt-feature-icon{width:52px;height:52px}.pt-marquee-group li{gap:14px}@media(max-width:760px){.pt-feature-icon{width:46px;height:46px}.pt-marquee-group li{gap:12px}}
