@@ -4,9 +4,9 @@ Die Homepage ist die visuelle Referenz für alle Produktseiten. Eine gemeinsame 
 
 PartnerStrip, CostSection, Header, Footer, FAQ und Beratungsdialog als gemeinsame Komponenten verwenden, nicht pro Seite nachbauen. Mobil steht das Hero-Bild vor dem Text; eine Produktbezeichnung genügt, keine redundanten Breadcrumbs und Sticker. Produktseiten erhalten eigene Motive mit konsistenter Bildsprache.
 
-Tarifkarten mobil horizontal wischbar mit erreichbaren Pfeilen und Punkten; kein Autoplay. Beitrag-CTA an relevanten Entscheidungsstellen wiederholen. Mobil unten fix erst nach Verlassen der Hero-Aktionen; auf Desktop genügt die feste Header-Aktion. Keine fingierte Rechnerfunktion vor echter Anbindung.
+Tarifkarten mobil horizontal wischbar mit erreichbaren Pfeilen und Punkten; kein Autoplay. Beitrag-CTA im Hero und Abschluss; kompakte feste Aktion nach Hero auf Mobile und Desktop. Keine zusätzlichen CTA-Gruppen unter Tabelle/Kostengrafik und keine Vorbereitungshinweise direkt unter Buttons. Keine fingierte Rechnerfunktion vor echter Anbindung.
 
-Kostenmotive mit gut lesbaren HTML-Beschriftungen kombinieren. Einzelgebühren und Gesamtkosten klar unterscheiden, Quelle und Umfang nennen. Keine ungeprüften Auszeichnungen oder lizenzpflichtigen Siegel übernehmen; frühere Hinweise zur Siegelnutzung sind hiermit überholt.
+Auf Nutzerwunsch auch transparente generierte Kosteninfografik mit kurzen eingebetteten Beschriftungen, unterstrichenen Preisen und aussagekräftigem Alt-Text; echte Alpha-Transparenz und mobile Lesbarkeit prüfen. Einzelgebühren und Gesamtkosten klar unterscheiden, Quelle und Umfang nennen. Keine ungeprüften Auszeichnungen oder lizenzpflichtigen Siegel übernehmen; frühere Hinweise zur Siegelnutzung sind hiermit überholt.
 
 Vor Veröffentlichung: 320/390/768/1440 px prüfen, kein Seitenüberlauf; gleiche Buttonhöhen, Bildreihenfolge, Carousel, Dialog und reduzierte Bewegung kontrollieren.
 
