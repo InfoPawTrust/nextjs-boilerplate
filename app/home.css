@@ -27,3 +27,12 @@ html{scroll-behavior:smooth;scroll-padding-top:110px}.home-page{background:var(-
 
 /* Editorial icon proposal: open silhouettes, no circular app badges. */
 .pt-feature-icon{width:52px;height:52px}.pt-marquee-group li{gap:14px}@media(max-width:760px){.pt-feature-icon{width:46px;height:46px}.pt-marquee-group li{gap:12px}}
+/* Shared actions: use the same pill geometry, typography and colours everywhere. */
+.home-page .pt-button{min-height:60px;padding:16px 24px;border:0;border-radius:50px;font-size:15px;font-weight:700;line-height:1.4;box-sizing:border-box}
+.home-page .pt-button-secondary{background:var(--pt-apricot);color:var(--pt-petrol)}
+.home-page .pt-button-secondary:hover:not(:disabled){background:#ffa879}
+.home-page .pt-button-primary{background:var(--pt-petrol);color:var(--pt-cream)}
+.home-page .pt-quote-pending:disabled{background:var(--pt-petrol);color:var(--pt-cream);cursor:not-allowed}
+.home-page .pt-header-cta{min-height:46px;padding:12px 18px;font-size:13px}
+.pt-action-group{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}.pt-action-group .pt-button{flex:1;white-space:nowrap;justify-content:space-between;margin:0}.pt-action-note{font-size:11px;color:var(--pt-muted);margin:12px 0 0}.pt-action-block{max-width:580px;margin-top:30px}.pt-closing .pt-action-block{margin-inline:auto}.pt-mobile-quote{display:none}
+@media(max-width:760px){.pt-action-group{flex-direction:column}.pt-action-group .pt-button{width:100%;flex:auto}.pt-mobile-quote{display:grid;position:fixed;bottom:0;left:0;right:0;z-index:18;padding:10px 16px max(9px,env(safe-area-inset-bottom));background:#fff5e8f5;backdrop-filter:blur(14px);box-shadow:0 -5px 25px #123f4310;transform:translateY(110%);visibility:hidden;transition:transform .25s,visibility .25s}.pt-mobile-quote.is-visible{transform:none;visibility:visible}.pt-mobile-quote .pt-button{justify-content:center;gap:20px;width:100%}.pt-mobile-quote>span{font-size:10px;text-align:center;margin-top:5px;color:var(--pt-muted)}.home-page:has(.pt-mobile-quote) .pt-footer{padding-bottom:110px}}

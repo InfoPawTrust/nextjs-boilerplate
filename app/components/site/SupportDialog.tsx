@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {JoyArc} from './Brand';
 export function openSupport(){window.dispatchEvent(new Event('pawtrust-support'));}
-export function SupportButton({label="Wir sind für dich da"}:{label?:string}){return <button className="pt-button pt-support-trigger" onClick={openSupport}>{label} <span aria-hidden="true">↗</span></button>}
+export function SupportButton({label="Wir sind für dich da",variant="primary"}:{label?:string;variant?:"primary"|"secondary"}){return <button className={`pt-button pt-support-trigger pt-button-${variant}`} onClick={openSupport}>{label} <span aria-hidden="true">↗</span></button>}
 export function SupportDialog(){const ref=useRef<HTMLDialogElement>(null);const timer=useRef<ReturnType<typeof setTimeout>|null>(null);const [closing,setClosing]=useState(false);const focus=useRef<HTMLElement|null>(null);
  useEffect(()=>{const open=()=>{focus.current=document.activeElement as HTMLElement;setClosing(false);ref.current?.showModal();};window.addEventListener('pawtrust-support',open);return()=>{window.removeEventListener('pawtrust-support',open);if(timer.current)clearTimeout(timer.current);}},[]);
  function close(){setClosing(true);timer.current=setTimeout(()=>{ref.current?.close();focus.current?.focus();setClosing(false)},matchMedia('(prefers-reduced-motion: reduce)').matches?0:200)}
