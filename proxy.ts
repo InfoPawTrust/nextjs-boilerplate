@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 // Preserve archived site code while exposing only the launch pages.
 export function proxy(request: NextRequest) {
+  if (/^\/api\/assistant\/(access|status|chat|session|close|context)$/.test(request.nextUrl.pathname)) return NextResponse.next();
   if (request.nextUrl.pathname.startsWith('/api/')) return NextResponse.json({ message: 'PawTrust befindet sich im Aufbau. Es werden keine Anfragen entgegengenommen.' }, { status: 410 });
   const target = request.nextUrl.clone(); target.pathname = '/'; target.search = '';
   return NextResponse.redirect(target, 307);
