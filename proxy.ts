@@ -5,4 +5,4 @@ export function proxy(request: NextRequest) {
   const target = request.nextUrl.clone(); target.pathname = '/'; target.search = '';
   return NextResponse.redirect(target, 307);
 }
-export const config = { matcher: ['/hundekrankenversicherung/:path*', '/katzenkrankenversicherung/:path*', '/faq/:path*', '/ratgeber/:path*', '/ueber-uns/:path*', '/funnel/:path*', '/angebot/:path*', '/partnerliste/:path*', '/cookie-einstellungen/:path*', '/api/:path*'] };
+export const config = { matcher: ['/hundekrankenversicherung/:path*', '/faq/:path*', '/ratgeber/:path*', '/ueber-uns/:path*', '/funnel/:path*', '/angebot/:path*', '/partnerliste/:path*', '/cookie-einstellungen/:path*', '/api/:path*'] };

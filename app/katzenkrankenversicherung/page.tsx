@@ -1,33 +1,27 @@
-import { Navbar } from "../components/Navbar";
-import { HeroSection } from "../components/HeroSection";
-import { AboutPawTrustSection } from "../components/AboutPawTrustSection";
-import { InsuranceComparisonSection } from "../components/InsuranceComparisonSection";
-import { BenefitsSection } from "../components/BenefitsSection";
-import { HowItWorks } from "../components/HowItWorks";
-import { FAQSection } from "../components/FAQSection";
-import { CTASection } from "../components/CTASection";
-import { Footer } from "../components/Footer";
-
-export const metadata = {
-  title: "Katzenkrankenversicherung vergleichen | PawTrust",
-  description:
-    "Vergleiche Katzenkrankenversicherungen mit bis zu 100 % Kostenübernahme. Finde schnell und kostenlos den passenden Schutz für deine Katze.",
-};
-
-export default function KatzenkrankenversicherungPage() {
-  return (
-    <div className="min-h-screen bg-off-white">
-      <Navbar />
-      <main>
-        <HeroSection variant="cat" />
-        <AboutPawTrustSection variant="cat" />
-        <InsuranceComparisonSection />
-        <BenefitsSection variant="cat" />
-        <HowItWorks variant="cat" />
-        <FAQSection variant="cat" />
-        <CTASection variant="cat" />
-      </main>
-      <Footer />
-    </div>
-  );
-}
+import Link from 'next/link';
+import type {Metadata} from 'next';
+import Image from 'next/image';
+import {SiteHeader} from '../components/site/SiteHeader';
+import {SiteFooter} from '../components/site/SiteFooter';
+import {CostSection} from '../components/site/CostSection';
+import {FeatureIcon} from '../components/site/FeatureIcon';
+import {Arrow,JoyArc} from '../components/site/Brand';
+import {Accordion} from '../components/site/Accordion';
+import {SupportButton,SupportDialog} from '../components/site/SupportDialog';
+import {cat} from '../../content/cat';
+import '../home.css';
+import './product.css';
+export const metadata:Metadata={title:'Katzenkrankenversicherung – Schutz verstehen',description:'BarmeniaGothaer-Katzentarife verständlich erklärt: Leistungen im Vergleich und ein interaktives Kostenbeispiel bei PawTrust.',alternates:{canonical:'/katzenkrankenversicherung'},openGraph:{title:'Für kleine Pfoten. Und große Pläne. | PawTrust',images:['/images/katze-wohnen.webp']}};
+export default function CatPage(){return <div className="home-page cat-page"><SiteHeader/><main id="inhalt">
+<section className="pt-shell pt-hero cat-hero"><div className="pt-hero-copy"><nav className="cat-breadcrumb" aria-label="Brotkrumen"><Link href="/">Startseite</Link><span aria-hidden="true">/</span><span>Katzenkrankenversicherung</span></nav><p className="pt-eyebrow">Katzenkrankenversicherung</p><h1>Für kleine Pfoten.<br/><span>Und große Pläne.</span></h1><p className="pt-lead">Du kennst ihren Lieblingsplatz. Wir helfen dir, ihren Schutz zu verstehen – für Tierarztbesuche und für den Fall einer OP.</p><ul className="cat-hero-points"><li>Kranken- und OP-Schutz in einem Tarif</li><li>Deine Katze. Deine Tierarztwahl.</li><li>Leistungen und Eigenanteil bewusst wählen</li></ul><div className="cat-actions"><button className="pt-button" disabled aria-describedby="quote-note">Beitrag berechnen <Arrow/></button><SupportButton label="Kostenlose Beratung"/></div><p className="pt-hero-note" id="quote-note">Online-Rechner in Vorbereitung. <Link href="#tarife">Jetzt Tarife kennenlernen ↓</Link></p></div><div className="cat-hero-picture"><div className="cat-orbit" aria-hidden="true"/><Image src="/images/katze-wohnen.webp" alt="Eine aufmerksame Katze auf einem hellen Sofa" width={1024} height={1024} priority sizes="(max-width:760px) 95vw, 50vw"/><span className="cat-photo-note"><JoyArc/>Eigenwillig. Einzigartig. Familie.</span></div></section>
+<section className="pt-shell cat-partner"><div><span className="pt-eyebrow">Unser geplanter Tarifpartner</span><Image src="/images/barmeniagothaer.svg" alt="BarmeniaGothaer" width={210} height={50}/></div><p>Du entscheidest über den Schutz.<br/><strong>Wir machen die Unterschiede verständlich.</strong></p><Link className="pt-text-link" href="#leistungen">Leistungen ansehen <Arrow/></Link></section>
+<section className="pt-shell pt-section"><div className="pt-section-heading"><p className="pt-eyebrow">Für alles zwischen Sofa und Streifzug</p><h2>Weil das Leben nicht<br/>nur auf Samtpfoten kommt.</h2><p>Mal ein ungeplanter Tierarztbesuch, mal eine größere Behandlung. Schau auf den Schutz dahinter – nicht nur auf den Monatsbeitrag.</p></div><div className="cat-benefits">{[{title:'Wenn eine OP nötig wird.',text:'Operation, Diagnostik und Nachbehandlung gehören zusammen. Achte deshalb auch auf die Leistungen vor und nach dem Eingriff.',icon:3},{title:'Wenn es keine OP braucht.',text:'Auch Untersuchungen und Behandlungen ohne Operation können relevant werden. Hier unterscheiden sich die jährlichen Budgets.',icon:0},{title:'Wenn du vorausplanst.',text:'Vorsorge und bestimmte Zahnbehandlungen haben eigene Grenzen. Diese Details machen wir im Vergleich sichtbar.',icon:1}].map(b=><article key={b.title}><FeatureIcon index={b.icon}/><h3>{b.title}</h3><p>{b.text}</p></article>)}</div></section>
+<section className="cat-tariffs" id="tarife"><div className="pt-shell"><div className="pt-section-heading"><p className="pt-eyebrow">Dein Blick auf die Tarife</p><h2>Wie viel Schutz<br/>passt zu euch?</h2><p>Drei BarmeniaGothaer-Tarife im Detail. Klar nebeneinander, damit du die Unterschiede siehst.</p></div><div className="cat-plan-grid">{cat.plans.map((p,i)=><article className={`cat-plan cat-plan-${i}`} key={p.name}><span className="pt-eyebrow">{p.intro}</span><h3>{p.name}</h3><p>{p.text}</p><div className="cat-plan-value"><strong>{p.value}</strong><span>{p.detail}</span></div><Link href="#leistungen" className="pt-text-link">Leistungen vergleichen <Arrow/></Link></article>)}</div><p className="pt-fine">Öffentliche Tarifübersicht, kein persönliches Angebot. Die für PawTrust verfügbare Tarifauswahl wird mit der Vertriebsanbindung bestätigt. Hier gezeigt: reguläre Varianten, keine Akut-Tarife.</p></div></section>
+<section className="pt-shell pt-section" id="leistungen"><div className="pt-section-heading"><p className="pt-eyebrow">Die Unterschiede auf einen Blick</p><h2>Weniger Kleingedruckt-Gefühl.<br/>Mehr Überblick.</h2></div><p className="cat-table-hint">Auf kleinen Bildschirmen kannst du die Tabelle seitlich bewegen.</p><div className="cat-table-scroll" tabIndex={0} role="region" aria-label="Tarifvergleich, seitlich scrollbar"><table className="cat-table"><caption className="cat-sr-only">BarmeniaGothaer Katzenkrankenversicherung: Top, Premium und Premium Plus</caption><thead><tr><th scope="col">Leistung</th>{cat.plans.map(p=><th scope="col" key={p.name}>{p.name}</th>)}</tr></thead><tbody>{cat.rows.map(r=><tr key={r.label}><th scope="row">{r.label}</th>{r.values.map((v,i)=><td key={i}>{v==='Ja'?<span className="cat-check"><span aria-hidden="true">✓</span><span className="cat-sr-only">Enthalten</span></span>:v}</td>)}</tr>)}</tbody></table></div><div className="cat-table-notes"><p>¹ Vorsorge und Zahnbehandlungen werden auf das jährliche Heilbehandlungsbudget angerechnet. Die Akut-Varianten weichen ab. ² Im tariflich definierten tierärztlichen Notdienst.</p><p>Auszug, Stand 24.09.2026. Wartezeiten, Ausschlüsse und weitere Bedingungen gelten. Maßgeblich sind die <Link href={cat.avb} target="_blank" rel="noreferrer">AVB Top / Premium (PDF)</Link> und <Link href={cat.avbPlus} target="_blank" rel="noreferrer">AVB Premium Plus (PDF)</Link>.</p></div></section>
+<section className="pt-brand-section"><div className="pt-shell pt-brand-grid"><div><p className="pt-eyebrow">Tierisch nah. Klar im Kopf.</p><h2>Sie ist nicht einfach<br/>eine Katze.<br/>Sie ist deine Familie.</h2></div><div><JoyArc/><p>Die kleine Nase am Morgen. Das Schnurren auf deinem Schoß. Der Platz auf dem Sofa, der längst ihr gehört.</p><p>Ein guter Plan beginnt damit, zu verstehen, was versichert ist. Und was du selbst übernehmen würdest.</p></div></div></section>
+<section className="pt-shell pt-section cat-cost-intro"><div className="pt-section-heading"><p className="pt-eyebrow">Was kostet ein Tierarztbesuch?</p><h2>Eine Behandlung.<br/>Oft mehr als ein Posten.</h2><p>Untersuchung, Diagnostik, Medikamente und Nachsorge können auf derselben Rechnung stehen. Ein einzelner Behandlungspreis erzählt deshalb nicht die ganze Geschichte.</p></div><div className="cat-cost-parts"><span>Untersuchung</span><span>Diagnostik</span><span>Behandlung / OP</span><span>Nachsorge</span></div><p className="pt-fine">Probiere unten verschiedene Rechnungsbeträge aus. Die Beträge sind frei gewählte Rechenbeispiele, keine tierärztlichen Kostenvoranschläge.</p></section>
+<CostSection/>
+<section className="pt-shell pt-section pt-faq" id="fragen"><div><p className="pt-eyebrow">Gut gefragt.</p><h2>Für dich klar.<br/>Für sie gut.</h2><p>Du musst nicht alles allein herausfinden.</p><SupportButton label="Kostenlose Beratung"/></div><div>{cat.faqs.map(f=><Accordion key={f.q} title={f.q}><p>{f.a}</p></Accordion>)}</div></section>
+<section className="pt-shell pt-closing"><JoyArc/><p className="pt-eyebrow">Für euer Leben zusammen.</p><h2>Viel Schnurren.<br/>Ein guter Plan.</h2><div className="cat-actions"><Link className="pt-button" href="#tarife">Zu den Tarifen <Arrow/></Link><SupportButton label="Lass uns sprechen"/></div></section>
+<aside className="pt-shell pt-proof-note" id="tarifhinweis"><p>Quelle der Tarifangaben: <Link href={cat.source} target="_blank" rel="noreferrer">BarmeniaGothaer Katzenkrankenversicherung</Link> und die oben verlinkten Versicherungsbedingungen. PawTrust ist kein Versicherer. Die Vermittlungs- und Rechneranbindung ist in Vorbereitung; auf dieser Seite werden noch keine Verträge abgeschlossen oder Beratungsanfragen versendet.</p></aside>
+</main><SiteFooter/><SupportDialog/></div>}

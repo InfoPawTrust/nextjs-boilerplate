@@ -1,0 +1,2 @@
+import {CostExample} from './CostExample';
+export function CostSection(){return <section className="pt-cost-section" id="kosten"><div className="pt-shell pt-cost-grid"><div><p className="pt-eyebrow">Verstehen statt vermuten</p><h2>Eine Rechnung.<br/>Mehr Klarheit.</h2><p className="pt-lead">Was übernimmt die Versicherung – und was bleibt bei dir? Probier aus, wie eine Selbstbeteiligung rechnerisch wirkt.</p><p>So wird aus einer abstrakten Prozentzahl ein Betrag, mit dem du etwas anfangen kannst.</p></div><CostExample/></div></section>}
