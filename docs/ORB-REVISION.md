@@ -1,0 +1,6 @@
+# Orb und Rechnereinstieg · Nutzerfeedback 24.09.2026
+
+In der lokalen Vorschau führen Homepage-Hero, Abschluss und Tierkarten direkt zum Hunde-/Katzenrechner; der Header öffnet generisch beziehungsweise auf der Katzenseite vorausgewählt. Vor der Tierauswahl kein Enzo. Frühere Orb-Sketchfigur und Bewegung unten rechts zur Mitte wiederhergestellt. Keine Sprechen/Schreiben-Tabs; Schreiben per Nachrichten-Icon, Orb bleibt sichtbar. Gespräch starten nur initial pro Gespräch, danach Fortsetzen per Icon. Pause links neben Mikrofon, Info und Ton als Icons. Datenschutz-Link statt langer Inline-Erklärung; OpenAI-Datenfluss im lokalen Datenschutzabschnitt. Keine neue öffentliche Freischaltung, keine Änderung an Tarifinhalten. Diese UX ersetzt die frühere Tabs-Vorgabe.
+
+Geprüft: Webpack-Produktionsbuild und TypeScript; voller Katzenablauf, zusätzlicher Vierbeiner, Tarifwahl, Zurücknavigation, Textantwort mit Mock, keine automatischen API-Aufrufe und vier Bildschirmbreiten. API-Backend unverändert. Keine echten kostenpflichtigen API-Aufrufe für diese UI-Prüfung. Datenschutz-Providerquelle: https://developers.openai.com/api/docs/guides/your-data . Öffentliche Rechtsfreigabe bleibt Teil der späteren Produktionsvorbereitung.
+
